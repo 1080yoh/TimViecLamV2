@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Tìm việc làm</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--login activity-->
+    <string name="hint_username">Tài khoản</string>
+    <string name="hint_password">Mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+    <string name="error_username_password_wrong">Lỗi! Tài khoản hoặc mật khẩu không chính xác</string>
+    <string name="notice_requiring_info">Vui lòng điền đầy đủ thông tin</string>
+
+
+    <!--register activity-->
+    <string name="register_account">Đăng ký tài khản</string>
+    <string name="register">Đăng ký</string>
+    <string name="hint_name">Họ và tên</string>
+    <string name="hint_repassword">Nhập lại mật khẩu</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone">Số điện thoại</string>
+    <string name="hint_address">Địa chỉ</string>
+    <string name="hint_desc">Giới thiệu</string>
+
+
+    <!---->
+    <string name="hint_searchview">Tên công việc, vị trí , lương ...</string>
+</resources>

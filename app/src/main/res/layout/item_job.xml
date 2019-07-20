@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/tvLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/drawcircle"
+        android:gravity="center"
+        android:text="Java"
+        android:textSize="@dimen/text_header"/>
+    <TextView
+        android:id="@+id/tvNameJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/element_margin"
+        android:layout_toRightOf="@id/tvLanguage"
+        android:maxLines="1"
+        android:padding="2dp"
+        android:text="Nhân viên kỹ thuật máy tính"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/tvNameRenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNameJob"
+        android:layout_marginLeft="@dimen/element_margin"
+        android:layout_toRightOf="@id/tvLanguage"
+        android:maxLines="1"
+        android:padding="2dp"
+        android:text="công ty trách nhiệm hữu hạn 1 thành viên"
+        android:textAllCaps="true" />
+
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNameRenter"
+        android:layout_marginLeft="@dimen/element_margin"
+        android:layout_toRightOf="@id/tvLanguage"
+        android:padding="2dp"
+        android:text="Hồ Chí Minh" />
+
+
+    <TextView
+        android:id="@+id/tvSalary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAddress"
+        android:layout_marginLeft="@dimen/element_margin"
+        android:layout_toRightOf="@id/tvLanguage"
+        android:padding="2dp"
+        android:text="100000000"
+        android:textColor="@color/salary_color"/>
+
+
+</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
