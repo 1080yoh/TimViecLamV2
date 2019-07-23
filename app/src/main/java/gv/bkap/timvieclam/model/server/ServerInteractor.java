@@ -22,7 +22,7 @@ public class ServerInteractor implements IServerInteractor {
     public static final String HOSTING_API = HOSTING + "api/";
     public static final String PAGE_LOGIN = "login.php";
     public static final String PAGE_INSERT = "register.php";
-
+    public static final  String PAGE_LOADJOB = "load-job.php";
 
     private final String TAG = "ServerInteractor";
 

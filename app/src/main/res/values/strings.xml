@@ -25,5 +25,6 @@
 
 
     <!---->
-    <string name="hint_searchview">Tên công việc, vị trí , lương ...</string>
+    <string name="hint_searchview">Tên công việc, vị trí ,  ...</string>
+    <string name="load_error">Công việc tạm thời không tồn tại</string>
 </resources>
