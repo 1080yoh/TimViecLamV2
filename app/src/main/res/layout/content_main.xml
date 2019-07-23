@@ -7,20 +7,121 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".view.main.MainActivity"
     tools:showIn="@layout/action_bar_main">
-   <GridView
-       android:id="@+id/gird"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:numColumns="3"
-       app:layout_constraintLeft_toLeftOf="parent"
-       app:layout_constraintRight_toRightOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
 
-       ></GridView>
+    <LinearLayout
+        android:id="@+id/listCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/listJob"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/IBtn_java"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_java" />
+
+            <TextView
+                android:id="@+id/tv_java"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/IBtn_java"
+                android:layout_centerHorizontal="true"
+                android:text="Java"
+                android:textSize="@dimen/sizetext" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/IBtn_php"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_php" />
+
+            <TextView
+                android:id="@+id/tv_php"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/IBtn_php"
+                android:layout_centerHorizontal="true"
+                android:text="Php"
+                android:textSize="@dimen/sizetext" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/IBtn_python"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_python" />
+
+            <TextView
+                android:id="@+id/tv_python"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/IBtn_python"
+                android:layout_centerHorizontal="true"
+                android:text="Python"
+                android:textSize="@dimen/sizetext" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/IBtn_danhmuc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_category" />
+
+            <TextView
+                android:id="@+id/tv_danhmuc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/IBtn_danhmuc"
+                android:layout_centerHorizontal="true"
+                android:text="Danh mục"
+                android:textSize="@dimen/sizetext" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_contentError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/error"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/listCategory" />
     <ListView
-    android:id="@+id/listJob"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@id/gird" ></ListView>
-
+        android:id="@+id/listJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_contentError"></ListView>
 </android.support.constraint.ConstraintLayout>

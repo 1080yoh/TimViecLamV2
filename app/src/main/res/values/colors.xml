@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#D81B60</color>
     <color name="colorAccent">#f78b5a</color>
     <color name="error">#ff0000</color>
+    <color name="color_category">#ffffff</color>
     <color name="salary_color">#FF9800</color>
 </resources>

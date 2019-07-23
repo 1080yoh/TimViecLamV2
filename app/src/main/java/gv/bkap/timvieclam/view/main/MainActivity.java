@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import gv.bkap.timvieclam.model.entity.Account;
 import gv.bkap.timvieclam.presenter.main.IMainPresenter;
 import gv.bkap.timvieclam.presenter.main.MainPresenter;
 import gv.bkap.timvieclam.view.AbsActivityHasNavDrawable;
+import gv.bkap.timvieclam.view.category.CategoryLanguage;
 import gv.bkap.timvieclam.view.login.LoginActivity;
 import gv.bkap.timvieclam.view.myinfo.MyInfoActivity;
 
@@ -25,18 +28,24 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     private IMainPresenter mainPresenter;
     private TextView tvNavName;
     private TextView tvNavUsername;
-//    private TextView tvMain;
     private ImageView ivNavAvatar;
+    private ImageButton IBtnCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addNavDrawable();
-
         mainPresenter = new MainPresenter(this, getApplicationContext());
         initComps();
         initData();
+        IBtnCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CategoryLanguage.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -75,6 +84,7 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         taskOpenActivity.execute(intent);
     }
 
+
     @Override
     public void navigateToInfoActivity() {
         Intent intent = new Intent(this, MyInfoActivity.class);
@@ -94,7 +104,7 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         tvNavName = header.findViewById(R.id.tvNavName);
         tvNavUsername = header.findViewById(R.id.tvNavUsername);
         ivNavAvatar = header.findViewById(R.id.ivNavAvatar);
-
+        IBtnCategory = findViewById(R.id.IBtn_danhmuc);
 //        tvMain = findViewById(R.id.tvMain);
     }
 

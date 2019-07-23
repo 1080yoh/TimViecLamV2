@@ -15,6 +15,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".view.category.CategoryLanguage"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.register.RegisterActivity" />
         <activity android:name=".view.myinfo.MyInfoActivity" />
         <activity android:name=".view.login.LoginActivity" />
@@ -32,4 +35,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
