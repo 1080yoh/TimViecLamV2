@@ -11,10 +11,17 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
+import java.util.Random;
 
 import gv.bkap.timvieclam.R;
 import gv.bkap.timvieclam.model.ApplicationContext;
 import gv.bkap.timvieclam.model.entity.Account;
+import gv.bkap.timvieclam.model.server.ServerInteractor;
 import gv.bkap.timvieclam.presenter.main.IMainPresenter;
 import gv.bkap.timvieclam.presenter.main.MainPresenter;
 import gv.bkap.timvieclam.view.AbsActivityHasNavDrawable;
@@ -38,7 +45,7 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         addNavDrawable();
         mainPresenter = new MainPresenter(this, getApplicationContext());
         initComps();
-        initData();
+        loadData();
         IBtnCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +95,8 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     @Override
     public void navigateToInfoActivity() {
         Intent intent = new Intent(this, MyInfoActivity.class);
-        startActivity(intent);
+        TaskOpenActivity taskOpenActivity = new TaskOpenActivity();
+        taskOpenActivity.execute(intent);
     }
 
     @Override
@@ -105,21 +113,38 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         tvNavUsername = header.findViewById(R.id.tvNavUsername);
         ivNavAvatar = header.findViewById(R.id.ivNavAvatar);
         IBtnCategory = findViewById(R.id.IBtn_danhmuc);
-//        tvMain = findViewById(R.id.tvMain);
     }
 
-    private void initData() {
+    @Override
+    public void loadData() {
         account = ((ApplicationContext) getApplication()).getAccount();
-        if (account != null) {
+        if (account != null && account.getId() != -1) {
             tvNavName.setText(account.getName_displayed());
             tvNavUsername.setText(account.getUsername());
+            setNavMenu(R.menu.menu_nav_main);
+            Glide.with(this).load(account.getAvatar()).apply(RequestOptions.circleCropTransform()).into(ivNavAvatar);
+        } else {
+            Random rd = new Random();
+            String name = "User no." + Math.abs(rd.nextInt() % 10000);
+            tvNavName.setText(name);
+            tvNavUsername.setText(name);
+            setNavMenu(R.menu.menu_nav_main_not_login);
+            Glide.with(this).load(ServerInteractor.DEFAULT_USER_IMG).apply(RequestOptions.circleCropTransform()).into(ivNavAvatar);
         }
+    }
 
-//        tvMain.setText("GG");
+    @Override
+    public void setNavMenu(int idMenu) {
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu(idMenu);
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private class TaskOpenActivity extends AsyncTask<Intent, Void, Void> {
-
         @Override
         protected Void doInBackground(Intent... intents) {
             startActivity(intents[0]);

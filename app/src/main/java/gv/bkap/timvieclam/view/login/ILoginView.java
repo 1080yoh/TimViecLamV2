@@ -11,4 +11,6 @@ public interface ILoginView {
     void hideProgressDialog();
     void navigateToMainActivity();
     void navigateToRegisterActivity();
+
+    void makeToast(String message);
 }

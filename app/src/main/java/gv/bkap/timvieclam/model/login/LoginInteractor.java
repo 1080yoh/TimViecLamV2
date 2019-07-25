@@ -15,7 +15,7 @@ import gv.bkap.timvieclam.presenter.login.IOnLoginValidateListener;
 
 public class LoginInteractor implements ILoginInteractor {
 
-    private final String TAG = "LoginInteractor";
+    private final String TAG = "(DEBUG) LoginInteractor";
 
     IOnLoginValidateListener onLoginValidateListener;
     Context context;
@@ -35,7 +35,7 @@ public class LoginInteractor implements ILoginInteractor {
         Boolean error = false;
 
         if (account == null) {
-            Log.e("debug xxx", "Login unsuccessfully");
+            Log.e("debug xxx", "Login failed");
             onLoginValidateListener.onUsernameError(context.getString(R.string.error_username_password_wrong));
             error = true;
         }
@@ -64,7 +64,6 @@ public class LoginInteractor implements ILoginInteractor {
 
             final String result = new ServerInteractor().sendRequest(
                     1, ServerInteractor.HOSTING_API + ServerInteractor.PAGE_LOGIN, sendData);
-            Log.e(TAG, "Result: " + result);
             try {
                 Log.e("debug xxx", "Result got: "+result);
                 return AccountMapper.getAccount(result);

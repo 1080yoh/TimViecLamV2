@@ -3,21 +3,24 @@ package gv.bkap.timvieclam.model;
 import android.app.Application;
 
 import gv.bkap.timvieclam.model.entity.Account;
+import gv.bkap.timvieclam.model.utils.PrefSaveProfile;
 
 public class ApplicationContext extends Application {
 
-    Account account;
-
     public ApplicationContext() {
-        account = null;
     }
 
     public Account getAccount() {
-        return account;
+        return new PrefSaveProfile(this).getAccount();
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void saveAccount(Account account) {
+        new PrefSaveProfile(this).saveAccount(account);
+    }
+
+
+    public void removeAccount() {
+        new PrefSaveProfile(this).removeAccount();
     }
 
 }

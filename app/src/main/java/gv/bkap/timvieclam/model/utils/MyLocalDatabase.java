@@ -38,7 +38,6 @@ public class MyLocalDatabase {
             account.setId(cursor.getInt(cursor.getColumnIndex("id")));
             account.setUsername(cursor.getString(cursor.getColumnIndex("username")));
             account.setPassword(cursor.getString(cursor.getColumnIndex("password")));
-            account.setType(cursor.getInt(cursor.getColumnIndex("type")));
         }
         return account;
     }

@@ -27,4 +27,15 @@
     <!---->
     <string name="hint_searchview">Tên công việc, vị trí ,  ...</string>
     <string name="load_error">Công việc tạm thời không tồn tại</string>
+
+    <!--detail customer activity-->
+    <string name="hint_name_displayed">Tên hiển thị</string>
+    <string name="hint_email_contact">Email liên hệ</string>
+    <string name="hint_phone_contact">Điện thoại liên hệ</string>
+    <string name="btn_update_info">Thay đổi</string>
+    <string name="btn_change_password">Thay đổi</string>
+    <string name="hint_old_password">Mật khẩu cũ</string>
+    <string name="hint_new_password">Mật khẩu mới</string>
+    <string name="hint_renew_password">Nhập lại mật khẩu mới</string>
+
 </resources>

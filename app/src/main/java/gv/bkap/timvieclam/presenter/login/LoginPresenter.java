@@ -23,8 +23,19 @@ public class LoginPresenter implements IOnLoginValidateListener, ILoginPresenter
     @Override
     public void login(String username, String password) {
         loginView.resetErrors();
-        loginView.showProgressDialog();
-        loginInteractor.login(username, password, this, this.context);
+        boolean error = false;
+        if (username.length() == 0) {
+            loginView.setUsernameError("Tài khoản không được để trống!");
+            error = true;
+        }
+        if (password.length() == 0) {
+            loginView.setPasswordError("Mật khẩu không được để trống!");
+            error = true;
+        }
+        if (!error) {
+            loginView.showProgressDialog();
+            loginInteractor.login(username, password, this, this.context);
+        }
     }
 
     @Override
@@ -42,8 +53,10 @@ public class LoginPresenter implements IOnLoginValidateListener, ILoginPresenter
     @Override
     public void onLoginSuccess(Account account) {
         ApplicationContext applicationContext = (ApplicationContext) context.getApplicationContext();
-        applicationContext.setAccount(account);
+        applicationContext.saveAccount(account);
+
         loginView.hideProgressDialog();
+        loginView.makeToast("Đăng nhập thành công!");
 
         loginView.navigateToMainActivity();
     }

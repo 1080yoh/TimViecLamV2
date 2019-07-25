@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,15 @@ public class LoginActivity extends AbsCommonActivity implements ILoginView, View
         addEvents();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        etPassword.setText("");
+        etPassword.setError(null);
+        etUsername.setText("");
+        etUsername.setError(null);
+    }
+
     private void addEvents() {
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
@@ -51,7 +61,6 @@ public class LoginActivity extends AbsCommonActivity implements ILoginView, View
     private void initData() {
 
         progressDialog = new ProgressDialog(this);
-
 
         // Database luu cac tai khoan da dang nhap
         mDB = new MyLocalDatabase(this);
@@ -103,7 +112,13 @@ public class LoginActivity extends AbsCommonActivity implements ILoginView, View
 
     @Override
     public void navigateToRegisterActivity() {
+        Intent register = new Intent(this, RegisterActivity.class);
+        startActivity(register);
+    }
 
+    @Override
+    public void makeToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -114,8 +129,7 @@ public class LoginActivity extends AbsCommonActivity implements ILoginView, View
                 loginPresenter.login(etUsername.getText().toString(), etPassword.getText().toString());
                 break;
             case R.id.btn_register:
-                Intent register = new Intent(this, RegisterActivity.class);
-                startActivity(register);
+                navigateToRegisterActivity();
                 break;
         }
     }

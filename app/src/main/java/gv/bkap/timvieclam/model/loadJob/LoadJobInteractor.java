@@ -17,7 +17,7 @@ public class LoadJobInteractor implements ILoadJobInteractor {
 
     private final String TAG = "LoadJobInteractor";
 
-   ILoadJobPresenter iLoadJobPresenter;
+    ILoadJobPresenter iLoadJobPresenter;
     Context context;
 
     @Override
@@ -25,6 +25,7 @@ public class LoadJobInteractor implements ILoadJobInteractor {
         this.iLoadJobPresenter = iLoadJobPresenter;
         this.context = context;
     }
+
     private void validated(Job job) {
         Boolean error = false;
 
@@ -39,6 +40,7 @@ public class LoadJobInteractor implements ILoadJobInteractor {
             Log.e("debug xxx", "Login successfully");
         }
     }
+
     private class LoadTask extends AsyncTask<String, Void, Job> {
 
         @Override
@@ -54,7 +56,7 @@ public class LoadJobInteractor implements ILoadJobInteractor {
                     1, ServerInteractor.HOSTING_API + ServerInteractor.PAGE_LOGIN, sendData);
             Log.e(TAG, "Result: " + result);
             try {
-                Log.e("debug xxx", "Result got: "+result);
+                Log.e("debug xxx", "Result got: " + result);
                 return JobMapper.getJob(result);
             } catch (JSONException e) {
                 e.printStackTrace();

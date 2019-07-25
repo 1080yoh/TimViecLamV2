@@ -11,11 +11,11 @@ public class MainPresenter implements IMainPresenter {
 
     private final String TAG = this.getClass().getSimpleName();
     private IMainView mainView;
-    private Context applicationContext;
+    private ApplicationContext applicationContext;
 
     public MainPresenter(IMainView mainView, Context applicationContext) {
         this.mainView = mainView;
-        this.applicationContext = applicationContext;
+        this.applicationContext = (ApplicationContext) applicationContext;
     }
 
     @Override
@@ -27,14 +27,19 @@ public class MainPresenter implements IMainPresenter {
     public void processNavMenuClick(int id) {
         switch (id) {
             case R.id.nav_me:
-                Account account = ((ApplicationContext) applicationContext).getAccount();
-                if (account == null)
-                    mainView.navigateToLoginActivity();
-                else
+                Account account = applicationContext.getAccount();
+                if (account != null && account.getId() != -1)
                     mainView.navigateToInfoActivity();
+                else
+                    mainView.navigateToLoginActivity();
                 break;
+            case R.id.nav_logout:
+                applicationContext.removeAccount();
+                mainView.loadData();
+                mainView.showToast("Đăng xuất thành công!");
             default:
                 break;
         }
     }
+
 }

@@ -4,29 +4,17 @@ public class Account {
     private int id;
     private String username;
     private String password;
-    private String repassword;
     private String name_displayed;
     private String email_restore;
-    private int type;
+    private String avatar;
 
     public Account() {
     }
 
-    public Account(String username, String password, String name_displayed, String email_restore, int type) {
-        this.username = username;
-        this.password = password;
-        this.name_displayed = name_displayed;
-        this.email_restore = email_restore;
-        this.type = type;
-    }
-
-    public Account(int id, String username, String password, String name_displayed, String email_restore, int type) {
+    public Account(int id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.name_displayed = name_displayed;
-        this.email_restore = email_restore;
-        this.type = type;
     }
 
     public Account(String username, String password, String name_displayed, String email_restore) {
@@ -36,12 +24,21 @@ public class Account {
         this.email_restore = email_restore;
     }
 
-    public Account(int id, String username, String password, String name_displayed, String email_restore) {
+    public Account(int id, String username, String password, String name_displayed, String email_restore, String avatar) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name_displayed = name_displayed;
         this.email_restore = email_restore;
+        this.avatar = avatar;
+    }
+
+    public Account(int id, String username, String password, String name_displayed, String avatar) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name_displayed = name_displayed;
+        this.avatar = avatar;
     }
 
     public String getName_displayed() {
@@ -50,14 +47,6 @@ public class Account {
 
     public void setName_displayed(String name_displayed) {
         this.name_displayed = name_displayed;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 
     public int getId() {
@@ -83,11 +72,12 @@ public class Account {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getRepassword() {
-        return repassword;
+
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setRepassword(String repassword) {
-        this.repassword = repassword;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

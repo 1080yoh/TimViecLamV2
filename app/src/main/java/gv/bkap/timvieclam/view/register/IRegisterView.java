@@ -4,5 +4,7 @@ public interface IRegisterView {
     void registerSuccess();
     void registerFail();
     void setError();
+
+    void accoutnAlreadyExits();
 }
 

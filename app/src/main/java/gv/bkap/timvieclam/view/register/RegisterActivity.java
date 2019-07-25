@@ -31,24 +31,24 @@ public class RegisterActivity extends AbsCommonActivity implements IRegisterView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initRegister();
-        registerPresenter = new RegisterPresenter();
+        registerPresenter = new RegisterPresenter(this);
         btnRegister.setOnClickListener(this);
 
 
     }
 
     public void initRegister() {
-        edUsername = (EditText) findViewById(R.id.edUsername);
-        edName = (EditText) findViewById(R.id.edName);
-        edPassword = (EditText) findViewById(R.id.edPassword);
-        edRePassword = (EditText) findViewById(R.id.edRePassword);
-        edEmail = (EditText) findViewById(R.id.edEmail);
-        tvUsernameError = (TextView) findViewById(R.id.tvUsernameError);
-        tvPasswordError = (TextView) findViewById(R.id.tvPasswordError);
-        tvRePasswordError = (TextView) findViewById(R.id.tvRePasswordError);
-        tvNameError = (TextView) findViewById(R.id.tvNameError);
-        tvEmailError = (TextView) findViewById(R.id.tvEmailError);
-        btnRegister = (Button) findViewById(R.id.btn_regisAccount);
+        edUsername = findViewById(R.id.edUsername);
+        edName = findViewById(R.id.edName);
+        edPassword = findViewById(R.id.edPassword);
+        edRePassword = findViewById(R.id.edRePassword);
+        edEmail = findViewById(R.id.edEmail);
+        tvUsernameError = findViewById(R.id.tvUsernameError);
+        tvPasswordError = findViewById(R.id.tvPasswordError);
+        tvRePasswordError = findViewById(R.id.tvRePasswordError);
+        tvNameError = findViewById(R.id.tvNameError);
+        tvEmailError = findViewById(R.id.tvEmailError);
+        btnRegister = findViewById(R.id.btn_regisAccount);
 
     }
 
@@ -110,18 +110,15 @@ public class RegisterActivity extends AbsCommonActivity implements IRegisterView
         }
 
 
-
         //check repassword error
 //        String password = edPassword.getText().toString();
         String rePassword = edRePassword.getText().toString();
         rePassword.trim();
         if (password.length() == 0) {
             tvRePasswordError.setText("Mật khẩu không được bỏ trống");
-        }
-        else if (!rePassword.equals(password)) {
+        } else if (!rePassword.equals(password)) {
             tvRePasswordError.setText("Mật khẩu không trùng khớp");
-        }
-        else {
+        } else {
             tvRePasswordError.setText("");
         }
 
@@ -147,7 +144,7 @@ public class RegisterActivity extends AbsCommonActivity implements IRegisterView
         String email = edEmail.getText().toString();
         email = email.trim();
         if (email.length() == 0) {
-            tvEmailError.setText("Mật khẩu không hợp lệ");
+            tvEmailError.setText("Email không hợp lệ");
         } else {
             for (int i = 0; i < email.length(); i++) {
                 charEmail = email.charAt(i);
@@ -156,7 +153,7 @@ public class RegisterActivity extends AbsCommonActivity implements IRegisterView
                 }
             }
             if (countSpaceEmail > 0) {
-                tvEmailError.setText("Emailkhông được chứa khoảng trắng");
+                tvEmailError.setText("Email không được chứa khoảng trắng");
             } else {
                 tvEmailError.setText("");
             }
@@ -164,7 +161,11 @@ public class RegisterActivity extends AbsCommonActivity implements IRegisterView
 
     }
 
-
+    @Override
+    public void accoutnAlreadyExits() {
+        Toast.makeText(this, "Lỗi! Đăng ký không thành công!", Toast.LENGTH_SHORT).show();
+        edUsername.setError("Tài khoản đã tồn tại");
+    }
 
 
     @Override
@@ -180,15 +181,11 @@ public class RegisterActivity extends AbsCommonActivity implements IRegisterView
         String password = edPassword.getText().toString();
         String name_display = edName.getText().toString();
         String email = edEmail.getText().toString();
-      Boolean check =  registerPresenter.checkRegister(usernameError, nameError, passwordError,repasswordError ,emailError);
-      if(check==false){
-          registerPresenter.AddAccount(username,password,name_display,email);
-          registerSuccess();
-
-      }
-      else
-      {
-          registerFail();
-      }
+        Boolean check = registerPresenter.checkRegister(usernameError, nameError, passwordError, repasswordError, emailError);
+        if (check == false) {
+            registerPresenter.AddAccount(username, password, name_display, email);
+        } else {
+            registerFail();
+        }
     }
 }

@@ -19,10 +19,16 @@ public class ServerInteractor implements IServerInteractor {
 
     public static final String DOMAIN = NotCommit.IP_SERVER;
     public static final String HOSTING = "http://" + DOMAIN + "/APITimViecLam/";
+    public static final String HOSTING_IMAGES = HOSTING + "images/";
     public static final String HOSTING_API = HOSTING + "api/";
     public static final String PAGE_LOGIN = "login.php";
+    public static final String PAGE_ADD_DEFAULT_CUSTOMER = "adddefaultcustomer.php";
+    public static final String PAGE_GET_SIMPLE_ACCOUNT = "getsimpleaccount.php";
     public static final String PAGE_INSERT = "register.php";
-    public static final  String PAGE_LOADJOB = "load-job.php";
+    public static final String PAGE_CHANGE_INFO = "changeinfo.php";
+    public static final String PAGE_LOADJOB = "load-job.php";
+
+    public static final String DEFAULT_USER_IMG = HOSTING_IMAGES + "user.jpg";
 
     private final String TAG = "ServerInteractor";
 
