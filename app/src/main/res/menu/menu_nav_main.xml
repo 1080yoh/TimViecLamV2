@@ -13,6 +13,10 @@
             android:id="@+id/nav_me"
             android:icon="@drawable/ic_nav_me"
             android:title="Tài khoản" />
+        <item
+            android:id="@+id/nav_registerjob"
+            android:icon="@drawable/ic_nav_jobmanager"
+            android:title="Đăng tin" />
     </group>
 
     <item android:title="Setting">
