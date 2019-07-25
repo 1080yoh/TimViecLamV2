@@ -38,6 +38,9 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     private ImageView ivNavAvatar;
     private ImageButton IBtnCategory;
 
+    // 1: visible, 0: invisible
+    boolean isMenuVisible = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +77,12 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        if (isMenuVisible) {
+            for (int i = 0; i < menu.size(); i++) {
+                menu.getItem(i).setVisible(false);
+                isMenuVisible = false;
+            }
+        }
         return super.onCreateOptionsMenu(menu);
     }
 

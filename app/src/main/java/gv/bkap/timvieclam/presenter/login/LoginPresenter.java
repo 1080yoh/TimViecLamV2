@@ -1,6 +1,7 @@
 package gv.bkap.timvieclam.presenter.login;
 
 import android.content.Context;
+import android.os.Handler;
 
 import gv.bkap.timvieclam.model.ApplicationContext;
 import gv.bkap.timvieclam.model.entity.Account;
@@ -21,7 +22,7 @@ public class LoginPresenter implements IOnLoginValidateListener, ILoginPresenter
     }
 
     @Override
-    public void login(String username, String password) {
+    public void login(final String username, final String password) {
         loginView.resetErrors();
         boolean error = false;
         if (username.length() == 0) {
@@ -34,7 +35,12 @@ public class LoginPresenter implements IOnLoginValidateListener, ILoginPresenter
         }
         if (!error) {
             loginView.showProgressDialog();
-            loginInteractor.login(username, password, this, this.context);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    loginInteractor.login(username, password, LoginPresenter.this, context);
+                }
+            }, 1000);
         }
     }
 
