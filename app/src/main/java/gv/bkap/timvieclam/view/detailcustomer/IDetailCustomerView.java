@@ -33,4 +33,8 @@ public interface IDetailCustomerView {
     void clearPasswordText();
 
     void showToast(String message);
+
+    void showProgressDialog();
+
+    void dismissProgressDialog();
 }

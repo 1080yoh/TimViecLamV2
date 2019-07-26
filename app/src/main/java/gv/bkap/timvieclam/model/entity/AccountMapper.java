@@ -17,15 +17,18 @@ public class AccountMapper {
         if (rootJSON != null && rootJSON.length() > 0) {
             JSONObject jsonObject = rootJSON.getJSONObject(0);
             int id = Integer.parseInt(jsonObject.getString("id_account"));
+
             String username = jsonObject.getString("username");
             String password = jsonObject.getString("password");
-            String email_restore = jsonObject.getString("email_restore");
             String name_displayed = jsonObject.getString("name_displayed");
             String avatar = ServerInteractor.HOSTING_IMAGES + jsonObject.getString("avatar");
+            String emailContact = jsonObject.getString("email_contact");
+            String address = jsonObject.getString("address");
+            String phone = jsonObject.getString("phone");
 
-            Log.e(TAG, "id=" + id + ", username=" + username + ", password=" + password + ",email_restore=" + email_restore + ",name_displayed=" + name_displayed + ",avatar=" + avatar);
+            Log.e(TAG, "id=" + id + ", username=" + username + ", password=" + password + ", name_displayed=" + name_displayed + ", email_contact=" + emailContact + ",avatar=" + avatar + ", phone=" + phone);
 
-            return new Account(id, username, password, name_displayed, email_restore, avatar);
+            return new Account(id, username, password, name_displayed, emailContact, address, avatar, phone);
         }
         return null;
     }

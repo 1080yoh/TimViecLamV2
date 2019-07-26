@@ -5,8 +5,11 @@ public class Account {
     private String username;
     private String password;
     private String name_displayed;
-    private String email_restore;
+    private String emailContact;
+    private String address;
     private String avatar;
+    private String phone;
+
 
     public Account() {
     }
@@ -17,28 +20,23 @@ public class Account {
         this.password = password;
     }
 
-    public Account(String username, String password, String name_displayed, String email_restore) {
-        this.username = username;
-        this.password = password;
-        this.name_displayed = name_displayed;
-        this.email_restore = email_restore;
-    }
-
-    public Account(int id, String username, String password, String name_displayed, String email_restore, String avatar) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.name_displayed = name_displayed;
-        this.email_restore = email_restore;
-        this.avatar = avatar;
-    }
-
     public Account(int id, String username, String password, String name_displayed, String avatar) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name_displayed = name_displayed;
         this.avatar = avatar;
+    }
+
+    public Account(int id, String username, String password, String name_displayed, String emailContact, String address, String avatar, String phone) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name_displayed = name_displayed;
+        this.emailContact = emailContact;
+        this.address = address;
+        this.avatar = avatar;
+        this.phone = phone;
     }
 
     public String getName_displayed() {
@@ -80,4 +78,30 @@ public class Account {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
+
+
+    public String getEmailContact() {
+        return emailContact;
+    }
+
+    public void setEmailContact(String emailContact) {
+        this.emailContact = emailContact;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 }

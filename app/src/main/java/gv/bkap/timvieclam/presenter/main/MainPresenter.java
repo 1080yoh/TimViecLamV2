@@ -29,7 +29,7 @@ public class MainPresenter implements IMainPresenter {
             case R.id.nav_me:
                 Account account = applicationContext.getAccount();
                 if (account != null && account.getId() != -1)
-                    mainView.navigateToInfoActivity();
+                    mainView.navigateToDetailCustomerActivity();
                 else
                     mainView.navigateToLoginActivity();
                 break;

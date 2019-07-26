@@ -41,13 +41,15 @@ public class SplashScreen extends AppCompatActivity {
     public void checkAccountFromServer(Account account) {
         if (account != null && account.getId() != -1) {
             LoginTask loginTask = new LoginTask();
-            loginTask.execute(new String[]{account.getUsername(), account.getPassword()});
+            loginTask.execute(account.getUsername(), account.getPassword());
         }
     }
 
     private void validated(Account account) {
         if (account == null) {
             ((ApplicationContext) getApplicationContext()).removeAccount();
+        } else {
+            ((ApplicationContext) getApplicationContext()).saveAccount(account);
         }
     }
 

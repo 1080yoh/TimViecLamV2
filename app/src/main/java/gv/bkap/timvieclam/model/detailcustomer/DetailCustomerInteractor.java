@@ -8,9 +8,11 @@ import org.json.JSONException;
 import gv.bkap.timvieclam.model.entity.MessageFromServer;
 import gv.bkap.timvieclam.model.entity.MessageFromServerMapper;
 import gv.bkap.timvieclam.model.server.ServerInteractor;
+import gv.bkap.timvieclam.model.utils.MD5Encoder;
 import gv.bkap.timvieclam.presenter.detailcustomer.IOnMessageReceived;
 
 public class DetailCustomerInteractor implements IDetailCustomerInteractor {
+
     private String TAG = "DetailCustomerInteractor";
     private IOnMessageReceived iOnMessageReceived;
 
@@ -25,8 +27,9 @@ public class DetailCustomerInteractor implements IDetailCustomerInteractor {
     }
 
     @Override
-    public void changePassword(int id_account, String oldPassword, String newPassword) {
-
+    public void changePassword(String username, String oldPassword, String newPassword) {
+        ChangePasswordTask changePasswordTask = new ChangePasswordTask();
+        changePasswordTask.execute(username, oldPassword, newPassword);
     }
 
     private class ChangeInfoTask extends AsyncTask<String, Void, MessageFromServer> {
@@ -78,13 +81,13 @@ public class DetailCustomerInteractor implements IDetailCustomerInteractor {
             if (strings.length != 3)
                 return null;
             String sendData[][] = {
-                    {"id_account", strings[0]},
-                    {"oldpassword", strings[1]},
-                    {"newpassword", strings[2]},
+                    {"username", strings[0]},
+                    {"oldpassword", MD5Encoder.encode(strings[1])},
+                    {"newpassword", MD5Encoder.encode(strings[2])},
             };
 
             final String result = new ServerInteractor().sendRequest(
-                    1, ServerInteractor.HOSTING_API + ServerInteractor.PAGE_CHANGE_INFO, sendData);
+                    1, ServerInteractor.HOSTING_API + ServerInteractor.PAGE_CHANGE_PASSWORD, sendData);
             Log.e(TAG, "Result: " + result);
             try {
                 return MessageFromServerMapper.mapMessageFromServer(result);
@@ -97,7 +100,7 @@ public class DetailCustomerInteractor implements IDetailCustomerInteractor {
         @Override
         protected void onPostExecute(MessageFromServer messageFromServer) {
             super.onPostExecute(messageFromServer);
-            iOnMessageReceived.onMessageChangeInfoReceived(messageFromServer);
+            iOnMessageReceived.onMessageChangePasswordReceived(messageFromServer);
         }
     }
 

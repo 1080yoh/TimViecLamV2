@@ -6,17 +6,20 @@ import android.content.SharedPreferences;
 import gv.bkap.timvieclam.model.entity.Account;
 
 public class PrefSaveProfile {
-    public static final String ID = "id";
     private static final String SHARED_PREFERENCES_NAME = "Account";
-    private static final String FN = "fullname";
+
+    public static final String ID = "id";
+    private static final String FN = "namedisplay";
     private static final String US = "username";
     private static final String PW = "password";
+    private static final String EM = "emailContact";
+    private static final String AD = "address";
     private static final String IM = "imagelink";
-    private Context context;
+    private static final String PH = "phone";
+
     private SharedPreferences sharedPreferences;
 
     public PrefSaveProfile(Context context) {
-        this.context = context;
         sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 
@@ -26,13 +29,16 @@ public class PrefSaveProfile {
 
     public Account getAccount() {//lấy customer từ file XML trong bộ nhớ trong
         int id;
-        String name, username, pass, imagelink;
+        String name, username, pass, imagelink, email, phone, address;
         id = sharedPreferences.getInt(ID, -1);
         name = sharedPreferences.getString(FN, "");
         username = sharedPreferences.getString(US, "");
         pass = sharedPreferences.getString(PW, "");
         imagelink = sharedPreferences.getString(IM, "");
-        return new Account(id, username, pass, name, imagelink);
+        email = sharedPreferences.getString(EM, "");
+        address = sharedPreferences.getString(AD, "");
+        phone = sharedPreferences.getString(PH, "");
+        return new Account(id, username, pass, name, email, address, imagelink, phone);
     }
 
     public void removeAccount() {
@@ -48,6 +54,9 @@ public class PrefSaveProfile {
         editor.putString(US, account.getUsername());
         editor.putString(PW, account.getPassword());
         editor.putString(IM, account.getAvatar());
+        editor.putString(EM, account.getEmailContact());
+        editor.putString(AD, account.getAddress());
+        editor.putString(PH, account.getPhone());
         editor.apply();
     }
 

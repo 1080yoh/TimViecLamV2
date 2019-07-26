@@ -7,9 +7,9 @@
     tools:context=".view.detailcustomer.DetailCustomerActivity">
 
     <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:id="@+id/ivAvatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_python" />
@@ -18,10 +18,15 @@
         android:id="@+id/tvUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:gravity="center"
         android:text="admin"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -176,8 +181,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
                 android:text="@string/btn_update_info" />
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
