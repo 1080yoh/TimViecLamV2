@@ -41,14 +41,27 @@ public class Account {
         this.avatar = avatar;
     }
 
+    public Account(int id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+
     public String getName_displayed() {
         return name_displayed;
     }
+
 
     public void setName_displayed(String name_displayed) {
         this.name_displayed = name_displayed;
     }
 
+    public String getEmail_restore() {
+        return email_restore;
+    }
+
+    public void setEmail_restore(String email_restore) {
+        this.email_restore = email_restore;
+    }
     public int getId() {
         return id;
     }

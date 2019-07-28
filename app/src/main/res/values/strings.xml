@@ -38,4 +38,38 @@
     <string name="hint_new_password">Mật khẩu mới</string>
     <string name="hint_renew_password">Nhập lại mật khẩu mới</string>
 
+
+    <!--Register job activity-->
+    <string-array name="list_exp">
+        <item>Không cần kinh nghiệm</item>
+        <item>Thực tập sinh</item>
+        <item>Dưới 1 năm</item>
+        <item>1 - 2 năm </item>
+        <item>3 -4 năm </item>
+        <item>5 - 7 năm</item>
+        <item>7 - 10 năm</item>
+        <item>Trên 10 năm</item>
+    </string-array>
+    <string-array name="list_salary">
+        <item>theo thỏa thuận</item>
+        <item>dưới 3tr</item>
+        <item>3 - 5tr</item>
+        <item>5 - 7tr</item>
+        <item>7 - 10tr</item>
+        <item>10 - 20tr</item>
+        <item>20 - 50tr</item>
+        <item>Trên 50tr</item>
+    </string-array>
+    <string-array name="list_language">
+        <item>Java</item>
+        <item>PHP</item>
+        <item>Python</item>
+        <item>Cshap</item>
+        <item>C/C++</item>
+        <item>JavaScript</item>
+        <item>Ruby</item>
+        <item>Swift</item>
+        <item>Android</item>
+        <item>Tester</item>
+    </string-array>
 </resources>

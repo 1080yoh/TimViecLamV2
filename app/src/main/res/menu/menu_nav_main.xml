@@ -15,8 +15,12 @@
             android:title="Tài khoản" />
         <item
             android:id="@+id/nav_registerjob"
-            android:icon="@drawable/ic_nav_jobmanager"
+            android:icon="@drawable/ic_nav_addjob"
             android:title="Đăng tin" />
+        <item
+            android:id="@+id/nav_listpost"
+            android:icon="@drawable/ic_action_name"
+            android:title="Nhật ký đăng tin  " />
     </group>
 
     <item android:title="Setting">

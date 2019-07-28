@@ -13,7 +13,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String TB_ACCOUNT = "account";
     public static final String TB_PERSONAL = "personal";
     public static final String TB_COMPANY = "company";
-
+    public static final String COL_IDACCOUNT = "id";
     public static final String COL_USERNAME = "username";
 
     public SQLiteHelper(@Nullable Context context) {

@@ -28,6 +28,7 @@ import gv.bkap.timvieclam.view.AbsActivityHasNavDrawable;
 import gv.bkap.timvieclam.view.category.CategoryLanguage;
 import gv.bkap.timvieclam.view.login.LoginActivity;
 import gv.bkap.timvieclam.view.myinfo.MyInfoActivity;
+import gv.bkap.timvieclam.view.registerjob.RegisterJobActivity;
 
 public class MainActivity extends AbsActivityHasNavDrawable implements NavigationView.OnNavigationItemSelectedListener, IMainView {
 
@@ -104,6 +105,13 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     @Override
     public void navigateToInfoActivity() {
         Intent intent = new Intent(this, MyInfoActivity.class);
+        TaskOpenActivity taskOpenActivity = new TaskOpenActivity();
+        taskOpenActivity.execute(intent);
+    }
+
+    @Override
+    public void navigateToRegisterJobActivity() {
+        Intent intent = new Intent(this, RegisterJobActivity.class);
         TaskOpenActivity taskOpenActivity = new TaskOpenActivity();
         taskOpenActivity.execute(intent);
     }

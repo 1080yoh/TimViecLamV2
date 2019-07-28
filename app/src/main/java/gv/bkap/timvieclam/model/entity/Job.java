@@ -9,6 +9,7 @@ public class Job {
     String SalaryJob;
     String describe;
     int number;
+    String interest;
 
     public Job(int idJob, int idCustomer, int idlistWork, String nameJob, String requestJob, String salaryJob, String describe, int number) {
         this.idJob = idJob;
@@ -31,8 +32,28 @@ public class Job {
         this.number = number;
     }
 
+    public Job(int idJob, int idCustomer, int idlistWork, String nameJob, String requestJob, String salaryJob, String describe, int number, String interest) {
+        this.idJob = idJob;
+        this.idCustomer = idCustomer;
+        this.idlistWork = idlistWork;
+        this.nameJob = nameJob;
+        RequestJob = requestJob;
+        SalaryJob = salaryJob;
+        this.describe = describe;
+        this.number = number;
+        this.interest = interest;
+    }
+
     public int getIdJob() {
         return idJob;
+    }
+
+    public String getInterest() {
+        return interest;
+    }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
     }
 
     public void setIdJob(int idJob) {

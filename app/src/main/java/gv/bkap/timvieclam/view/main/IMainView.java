@@ -4,6 +4,7 @@ public interface IMainView {
     void navigateToLoginActivity();
     void navigateToInfoActivity();
 
+    void navigateToRegisterJobActivity();
     void loadData();
 
     void setNavMenu(int idMenu);
