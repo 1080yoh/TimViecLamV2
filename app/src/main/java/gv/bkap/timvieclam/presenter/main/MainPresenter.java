@@ -56,6 +56,9 @@ public class MainPresenter implements IMainPresenter, IOnReceivedCategories {
                 applicationContext.removeAccount();
                 mainView.loadData();
                 mainView.showToast("Đăng xuất thành công!");
+                break;
+            case R.id.nav_registerjob:
+                mainView.navigateToRegisterJobActivity();
             default:
                 break;
         }

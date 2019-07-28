@@ -40,7 +40,6 @@ public class AccountMapper {
             int id = Integer.parseInt(jsonObject.getString("id_account"));
             String username = jsonObject.getString("username");
             String password = jsonObject.getString("password");
-
             Log.e(TAG, "id=" + id + ", username=" + username + ", password=" + password);
 
             return new Account(id, username, password);

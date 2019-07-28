@@ -11,6 +11,7 @@ public interface IMainView {
 
     void loadCategories(ArrayList<Category> lstCategories);
 
+    void navigateToRegisterJobActivity();
     void loadData();
 
     void setNavMenu(int idMenu);
