@@ -27,6 +27,7 @@ public class ServerInteractor implements IServerInteractor {
     public static final String PAGE_INSERT = "register.php";
     public static final String PAGE_CHANGE_INFO = "changeinfo.php";
     public static final String PAGE_CHANGE_PASSWORD = "changepassword.php";
+    public static final String PAGE_LOAD_CATEGORY = "loadcategory.php";
     public static final String PAGE_LOADJOB = "load-job.php";
 
     public static final String DEFAULT_USER_IMG = HOSTING_IMAGES + "user.jpg";
@@ -68,14 +69,15 @@ public class ServerInteractor implements IServerInteractor {
      */
     private String sendRequestGET(String url, String param[][]) throws IOException {
         // Chuẩn bị dữ liệu gửi dạng GET
-        StringBuilder urlParams = new StringBuilder(url + "?");
-        for (int i = 0; i < param.length; i++) {
-            if (i == 0) {
-                urlParams.append(param[i][0] + "=" + URLEncoder.encode(param[i][1], "UTF-8"));
-            } else {
-                urlParams.append("&" + param[i][0] + "=" + URLEncoder.encode(param[i][1], "UTF-8")); // Thêm &
+        StringBuilder urlParams = new StringBuilder(url);
+        if (param != null)
+            for (int i = 0; i < param.length; i++) {
+                if (i == 0) {
+                    urlParams.append("?").append(param[i][0]).append("=").append(URLEncoder.encode(param[i][1], "UTF-8"));
+                } else {
+                    urlParams.append("&").append(param[i][0]).append("=").append(URLEncoder.encode(param[i][1], "UTF-8")); // Thêm &
+                }
             }
-        }
 
         // Đường dẫn URL để gửi dữ liệu phương thức GET
         Log.e(TAG, "Gui du lieu di: " + urlParams.toString());

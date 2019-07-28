@@ -9,8 +9,8 @@ import gv.bkap.timvieclam.view.detailcustomer.IDetailCustomerView;
 
 public class DetailCustomerPresenter implements IDetailCustomerPresenter, IOnMessageReceived {
 
-    IDetailCustomerView iDetailView;
-    IDetailCustomerInteractor iDetailInteractor;
+    private IDetailCustomerView iDetailView;
+    private IDetailCustomerInteractor iDetailInteractor;
 
     public DetailCustomerPresenter(IDetailCustomerView iDetailCustomerView) {
         this.iDetailView = iDetailCustomerView;
@@ -21,19 +21,15 @@ public class DetailCustomerPresenter implements IDetailCustomerPresenter, IOnMes
     public void changeInfo(final int id_account, final String nameDisplayed, final String address, final String phoneContact, final String emailContact) {
         boolean error = false;
         if (nameDisplayed.trim().length() == 0) {
-            iDetailView.setNameDisplayedError("");
+            iDetailView.setNameDisplayedError("Tên không được để trống");
             error = true;
         }
         if (address.trim().length() == 0) {
-            iDetailView.setAddressError("");
-            error = true;
-        }
-        if (phoneContact.trim().length() == 0) {
-            iDetailView.setPhoneContactError("");
+            iDetailView.setAddressError("Địa chỉ không được để trống");
             error = true;
         }
         if (emailContact.trim().length() == 0) {
-            iDetailView.setEmailContactError("");
+            iDetailView.setEmailContactError("Email không được để trống");
             error = true;
         }
         if (!error) {

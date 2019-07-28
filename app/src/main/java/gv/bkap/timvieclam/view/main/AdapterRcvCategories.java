@@ -16,25 +16,25 @@ import java.util.ArrayList;
 import gv.bkap.timvieclam.R;
 import gv.bkap.timvieclam.model.entity.Category;
 
-public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.ViewHolder> {
+public class AdapterRcvCategories extends RecyclerView.Adapter<AdapterRcvCategories.CategoryItemHolder> {
 
     Context context;
     ArrayList<Category> lstCategories;
 
-    public AdapterCategories(Context context, ArrayList<Category> lstCategories) {
+    public AdapterRcvCategories(Context context, ArrayList<Category> lstCategories) {
         this.context = context;
         this.lstCategories = lstCategories;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public CategoryItemHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_category, null, false);
-        return new ViewHolder(v);
+        return new CategoryItemHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull CategoryItemHolder viewHolder, int position) {
         Category category = lstCategories.get(position);
         viewHolder.tvCategoryName.setText(category.getName());
         Glide.with(context).load(category.getIcon_link()).into(viewHolder.ibIconCategory);
@@ -45,11 +45,11 @@ public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.Vi
         return lstCategories.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class CategoryItemHolder extends RecyclerView.ViewHolder {
         ImageView ibIconCategory;
         TextView tvCategoryName;
 
-        public ViewHolder(@NonNull View itemView) {
+        public CategoryItemHolder(@NonNull View itemView) {
             super(itemView);
             this.ibIconCategory = itemView.findViewById(R.id.ibIconItemCategory);
             this.tvCategoryName = itemView.findViewById(R.id.tvItemCategoryName);

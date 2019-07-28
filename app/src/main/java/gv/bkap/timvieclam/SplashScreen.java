@@ -30,6 +30,7 @@ public class SplashScreen extends AppCompatActivity {
                 navigateToMain();
             }
         }, 500);
+
     }
 
     private void navigateToMain() {

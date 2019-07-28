@@ -198,6 +198,7 @@ public class DetailCustomerActivity extends AbsCommonActivity implements IDetail
                 address = etAddress.getText().toString();
                 phoneContact = etPhoneContact.getText().toString();
                 detailCustomerPresenter.changeInfo(account.getId(), nameDisplayed, address, phoneContact, email);
+
             case R.id.btnChangePassword:
                 String username, oldPassword, newPassword, retypePassword;
                 username = account.getUsername();

@@ -16,6 +16,7 @@ import gv.bkap.timvieclam.presenter.register.RegisterPresenter;
 public class RegisterInteractor implements IRegisterInteractor {
     private String username;
     private String password;
+    private String name_displayed;
 
     private final String TAG = "RegisterInteractor";
     private RegisterPresenter registerPresenter;
@@ -28,8 +29,9 @@ public class RegisterInteractor implements IRegisterInteractor {
     public void register(String username, String password, String name_display, String email_restore) {
         this.username = username;
         this.password = password;
+        this.name_displayed = name_display;
         RegisterAccount registerAccount = new RegisterAccount();
-        registerAccount.execute(new String[]{username, password, name_display, email_restore});
+        registerAccount.execute(new String[]{username, password, email_restore});
 
     }
 
@@ -37,13 +39,12 @@ public class RegisterInteractor implements IRegisterInteractor {
 
         @Override
         protected MessageFromServer doInBackground(String... strings) {
-            if (strings.length != 4)
+            if (strings.length != 3)
                 return null;
             String sendData[][] = {
                     {"username", strings[0]},
                     {"password", MD5Encoder.encode(strings[1])},
-                    {"name_display", strings[2]},
-                    {"email", strings[3]}
+                    {"email", strings[2]}
             };
 
             final String result = new ServerInteractor().sendRequest(
@@ -104,7 +105,7 @@ public class RegisterInteractor implements IRegisterInteractor {
         @Override
         protected void onPostExecute(Account account) {
             AddDefaultCustomer addDefaultCustomer = new AddDefaultCustomer();
-            addDefaultCustomer.execute(account.getId() + "");
+            addDefaultCustomer.execute(account.getId() + "", name_displayed);
         }
     }
 
@@ -112,10 +113,11 @@ public class RegisterInteractor implements IRegisterInteractor {
 
         @Override
         protected MessageFromServer doInBackground(String... strings) {
-            if (strings.length != 1)
+            if (strings.length != 2)
                 return null;
             String sendData[][] = {
                     {"id_account", strings[0]},
+                    {"name_displayed", strings[1]}
             };
 
             final String result = new ServerInteractor().sendRequest(

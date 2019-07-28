@@ -2,29 +2,30 @@ package gv.bkap.timvieclam.model.utils;
 
 import android.util.Log;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
-public class DateTimeConverter {
+public class DateTimeUtils {
     public static String YEAR = "YEAR";
     public static String MONTH = "MONTH";
     public static String DAY_OF_MONTH = "DAY_OF_MONTH";
 
-    public static String HOURS = "HOUR";
-    public static String MINUTES = "MINUTES";
-    public static String SECONDS = "SECONDS";
+    public static String HOUR = "HOUR";
+    public static String MINUTE = "MINUTE";
+    public static String SECOND = "SECOND";
 
-    public static HashMap<String, Integer> MySqlDateTime_To_ArrDate(String data) {
-        HashMap<String, Integer> lstDate = new HashMap<>();
+    public static HashMap<String, Integer> DateTime_Separate(String data) {
+        HashMap<String, Integer> mapDateTime = new HashMap<>();
 
         if (data == null) {
             Log.e("Debug xxx", "Date converter null");
-            return lstDate;
+            return mapDateTime;
         }
 
         data = data.trim();
         if (data.split(" ").length != 2) {
             Log.e("Debug xxx", "Date error:[" + data + "]");
-            return lstDate;
+            return mapDateTime;
         }
 
         String[] date = data.split(" ")[0].split("-");
@@ -38,15 +39,48 @@ public class DateTimeConverter {
         int minutes = Integer.parseInt(time[1]);
         int seconds = Integer.parseInt(time[2]);
 
-        lstDate.put(YEAR, year);
-        lstDate.put(MONTH, month);
-        lstDate.put(DAY_OF_MONTH, dayOfMonth);
+        mapDateTime.put(YEAR, year);
+        mapDateTime.put(MONTH, month);
+        mapDateTime.put(DAY_OF_MONTH, dayOfMonth);
 
-        lstDate.put(HOURS, hours);
-        lstDate.put(MINUTES, minutes);
-        lstDate.put(SECONDS, seconds);
+        mapDateTime.put(HOUR, hours);
+        mapDateTime.put(MINUTE, minutes);
+        mapDateTime.put(SECOND, seconds);
 
-        return lstDate;
+        return mapDateTime;
+    }
+
+    public static String timeUpToNow(String dateTimeMySql) {
+        HashMap<String, Integer> mapDateTime = DateTime_Separate(dateTimeMySql);
+        if (mapDateTime.size() == 0) {
+            return "Không tính được thời gian";
+        }
+
+        Calendar calendar = Calendar.getInstance();
+
+        int years = mapDateTime.get(YEAR) - calendar.get(Calendar.YEAR);
+        if (years > 0) {
+            return years + " năm trước";
+        }
+
+        int months = mapDateTime.get(MONTH) - calendar.get(Calendar.MONTH) - 1;
+        if (months > 0) {
+            return months + " tháng trước";
+        }
+
+        int days = mapDateTime.get(DAY_OF_MONTH) - calendar.get(Calendar.DAY_OF_MONTH);
+        if (days > 0) {
+            return days + " ngày trước";
+        }
+
+        // 24h
+        int hours = mapDateTime.get(HOUR) - calendar.get(Calendar.HOUR_OF_DAY);
+        if (hours > 0) {
+            return hours + " giờ trước";
+        }
+
+        int minutes = mapDateTime.get(MINUTE) - calendar.get(Calendar.MINUTE);
+        return minutes + " phút trước";
     }
 
 }
