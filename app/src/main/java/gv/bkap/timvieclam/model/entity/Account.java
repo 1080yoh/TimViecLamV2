@@ -53,13 +53,6 @@ public class Account {
         this.name_displayed = name_displayed;
     }
 
-    public String getEmail_restore() {
-        return email_restore;
-    }
-
-    public void setEmail_restore(String email_restore) {
-        this.email_restore = email_restore;
-    }
     public int getId() {
         return id;
     }

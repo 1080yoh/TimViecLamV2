@@ -1,7 +1,6 @@
 package gv.bkap.timvieclam.view.registerjob;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +10,9 @@ import gv.bkap.timvieclam.R;
 import gv.bkap.timvieclam.model.utils.MyLocalDatabase;
 import gv.bkap.timvieclam.presenter.registerjob.IRegisterJobPresenter;
 import gv.bkap.timvieclam.presenter.registerjob.RegisterJobPresenter;
+import gv.bkap.timvieclam.view.AbsCommonActivity;
 
-public class RegisterJobActivity extends AppCompatActivity implements IRegisterJobView {
+public class RegisterJobActivity extends AbsCommonActivity implements IRegisterJobView {
     Spinner spinExp;
     Spinner spinSalary;
     Spinner spinSkill;
