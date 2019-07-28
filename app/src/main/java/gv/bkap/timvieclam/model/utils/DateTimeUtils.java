@@ -58,28 +58,28 @@ public class DateTimeUtils {
 
         Calendar calendar = Calendar.getInstance();
 
-        int years = mapDateTime.get(YEAR) - calendar.get(Calendar.YEAR);
+        int years = calendar.get(Calendar.YEAR) - mapDateTime.get(YEAR);
         if (years > 0) {
             return years + " năm trước";
         }
 
-        int months = mapDateTime.get(MONTH) - calendar.get(Calendar.MONTH) - 1;
+        int months = calendar.get(Calendar.MONTH) + 1 - mapDateTime.get(MONTH);
         if (months > 0) {
             return months + " tháng trước";
         }
 
-        int days = mapDateTime.get(DAY_OF_MONTH) - calendar.get(Calendar.DAY_OF_MONTH);
+        int days = calendar.get(Calendar.DAY_OF_MONTH) - mapDateTime.get(DAY_OF_MONTH);
         if (days > 0) {
             return days + " ngày trước";
         }
 
         // 24h
-        int hours = mapDateTime.get(HOUR) - calendar.get(Calendar.HOUR_OF_DAY);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY) - mapDateTime.get(HOUR);
         if (hours > 0) {
             return hours + " giờ trước";
         }
 
-        int minutes = mapDateTime.get(MINUTE) - calendar.get(Calendar.MINUTE);
+        int minutes = calendar.get(Calendar.MINUTE) - mapDateTime.get(MINUTE);
         return minutes + " phút trước";
     }
 

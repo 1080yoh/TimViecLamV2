@@ -1,20 +1,32 @@
 package gv.bkap.timvieclam.model.entity;
 
 public class JobItem {
+    private int id;
     private String logoLink;
     private String jobName;
     private String renterName;
     private String location;
     private String salary;
     private String timeUptoNow;
+    private int id_category;
 
-    public JobItem(String logoLink, String jobName, String renterName, String location, String salary, String timeUptoNow) {
+    public JobItem(int id, String logoLink, String jobName, String renterName, String location, String salary, String timeUptoNow, int id_category) {
+        this.id = id;
         this.logoLink = logoLink;
         this.jobName = jobName;
         this.renterName = renterName;
         this.location = location;
         this.salary = salary;
         this.timeUptoNow = timeUptoNow;
+        this.id_category = id_category;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLogoLink() {
@@ -63,5 +75,13 @@ public class JobItem {
 
     public void setTimeUptoNow(String timeUptoNow) {
         this.timeUptoNow = timeUptoNow;
+    }
+
+    public int getId_category() {
+        return id_category;
+    }
+
+    public void setId_category(int id_category) {
+        this.id_category = id_category;
     }
 }

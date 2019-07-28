@@ -10,10 +10,10 @@
     tools:showIn="@layout/action_bar_main">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvCategories"
-        android:focusableInTouchMode="true"
+        android:id="@+id/rcvCategories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
         android:scrollbarSize="2dp"
         android:scrollbars="horizontal" />
 
@@ -35,15 +35,20 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/ivRefresh"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:src="@drawable/ic_new" />
+
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcvJobItems"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scrollbarSize="2dp"
+        android:scrollbars="vertical" />
 
 </LinearLayout>

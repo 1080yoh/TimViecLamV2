@@ -27,6 +27,8 @@ public class ServerInteractor implements IServerInteractor {
     public static final String PAGE_INSERT = "register.php";
     public static final String PAGE_CHANGE_INFO = "changeinfo.php";
     public static final String PAGE_LOADJOB = "loadjob.php";
+    public static final String PAGE_FILTER_JOB = "filterjobitem.php";
+    public static final String PAGE_LOAD_JOB_ITEM = "loadjobitem.php";
     public static final String PAGE_INSERTJOB = "insertjob.php";
     public static final String PAGE_CHANGE_PASSWORD = "changepassword.php";
     public static final String PAGE_LOAD_CATEGORY = "loadcategory.php";

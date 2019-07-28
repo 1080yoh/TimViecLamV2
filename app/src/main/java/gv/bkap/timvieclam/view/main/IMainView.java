@@ -3,6 +3,7 @@ package gv.bkap.timvieclam.view.main;
 import java.util.ArrayList;
 
 import gv.bkap.timvieclam.model.entity.Category;
+import gv.bkap.timvieclam.model.entity.JobItem;
 
 public interface IMainView {
     void navigateToLoginActivity();
@@ -10,6 +11,8 @@ public interface IMainView {
     void navigateToDetailCustomerActivity();
 
     void loadCategories(ArrayList<Category> lstCategories);
+
+    void loadJobItems(ArrayList<JobItem> lstJobItems);
 
     void navigateToRegisterJobActivity();
     void loadData();

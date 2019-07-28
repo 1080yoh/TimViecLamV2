@@ -9,11 +9,13 @@ import gv.bkap.timvieclam.R;
 import gv.bkap.timvieclam.model.ApplicationContext;
 import gv.bkap.timvieclam.model.entity.Account;
 import gv.bkap.timvieclam.model.entity.Category;
+import gv.bkap.timvieclam.model.entity.JobItem;
 import gv.bkap.timvieclam.model.main.IMainInteractor;
 import gv.bkap.timvieclam.model.main.MainInteractor;
+import gv.bkap.timvieclam.model.server.ServerInteractor;
 import gv.bkap.timvieclam.view.main.IMainView;
 
-public class MainPresenter implements IMainPresenter, IOnReceivedCategories {
+public class MainPresenter implements IMainPresenter, IOnReceivedCategories, IOnReceivedJobItems {
 
     private final String TAG = this.getClass().getSimpleName();
     private IMainView mainView;
@@ -39,7 +41,19 @@ public class MainPresenter implements IMainPresenter, IOnReceivedCategories {
             public void run() {
                 iMainInteractor.loadCategories();
             }
-        }, 1000);
+        }, 500);
+    }
+
+    @Override
+    public void loadJobItems() {
+        mainView.showProgressDialog();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                iMainInteractor.loadJobItems();
+            }
+        }, 500);
+
     }
 
     @Override
@@ -65,8 +79,24 @@ public class MainPresenter implements IMainPresenter, IOnReceivedCategories {
     }
 
     @Override
+    public void filterOutJobs(int idCategory) {
+        if (idCategory == -1)
+            loadJobItems();
+        else {
+            iMainInteractor.loadJobItems(idCategory);
+        }
+    }
+
+    @Override
     public void onReceivedCategories(ArrayList<Category> lstCategories) {
+        lstCategories.add(0, new Category(-1, "All", ServerInteractor.HOSTING_IMAGES + "ic_all.png"));
         mainView.loadCategories(lstCategories);
+        mainView.dismissProgressDialog();
+    }
+
+    @Override
+    public void onReceivedJobItems(ArrayList<JobItem> lstJobItems) {
+        mainView.loadJobItems(lstJobItems);
         mainView.dismissProgressDialog();
     }
 }

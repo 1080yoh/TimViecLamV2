@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.support.annotation.DimenRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +28,7 @@ import gv.bkap.timvieclam.R;
 import gv.bkap.timvieclam.model.ApplicationContext;
 import gv.bkap.timvieclam.model.entity.Account;
 import gv.bkap.timvieclam.model.entity.Category;
+import gv.bkap.timvieclam.model.entity.JobItem;
 import gv.bkap.timvieclam.model.server.ServerInteractor;
 import gv.bkap.timvieclam.presenter.main.IMainPresenter;
 import gv.bkap.timvieclam.presenter.main.MainPresenter;
@@ -35,7 +36,6 @@ import gv.bkap.timvieclam.view.AbsActivityHasNavDrawable;
 import gv.bkap.timvieclam.view.detailcustomer.DetailCustomerActivity;
 import gv.bkap.timvieclam.view.dialog.ProgressDialog;
 import gv.bkap.timvieclam.view.login.LoginActivity;
-import gv.bkap.timvieclam.view.myinfo.MyInfoActivity;
 import gv.bkap.timvieclam.view.registerjob.RegisterJobActivity;
 
 public class MainActivity extends AbsActivityHasNavDrawable implements NavigationView.OnNavigationItemSelectedListener, IMainView {
@@ -45,11 +45,14 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     private TextView tvNavName;
     private TextView tvNavUsername;
     private ImageView ivNavAvatar;
-    private ImageButton IBtnCategory;
 
-    private RecyclerView rvCategories;
+    private RecyclerView rcvCategories;
     private AdapterRcvCategories adapterRcvCategories;
     private ArrayList<Category> lstCategories;
+
+    private RecyclerView rcvJobItems;
+    private AdapterRcvJobs adapterRcvJobs;
+    private ArrayList<JobItem> lstJobItems;
 
     private ProgressDialog progressDialog;
 
@@ -68,18 +71,34 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         addEvents();
 
         mainPresenter.loadCategories();
+        mainPresenter.loadJobItems();
     }
 
     private void initData() {
         lstCategories = new ArrayList<>();
         adapterRcvCategories = new AdapterRcvCategories(this, lstCategories);
+        // set layout horizontal
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        rvCategories.setLayoutManager(layoutManager);
+        rcvCategories.setLayoutManager(layoutManager);
+        // set khoảng cách
         ItemOffsetDecoration dividerItemDecoration = new ItemOffsetDecoration(this,
                 R.dimen.divider_category);
-        rvCategories.addItemDecoration(dividerItemDecoration);
-        rvCategories.setAdapter(adapterRcvCategories);
+        rcvCategories.addItemDecoration(dividerItemDecoration);
+        rcvCategories.setAdapter(adapterRcvCategories);
+
+        lstJobItems = new ArrayList<>();
+        adapterRcvJobs = new AdapterRcvJobs(this, lstJobItems);
+        // set layout
+        LinearLayoutManager layoutManagerJobItem
+                = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        rcvJobItems.setLayoutManager(layoutManagerJobItem);
+        // thêm đường ngăn
+        DividerItemDecoration dividerJobItems = new DividerItemDecoration(this,
+                LinearLayoutManager.VERTICAL);
+        rcvJobItems.addItemDecoration(dividerJobItems);
+        // set adapter
+        rcvJobItems.setAdapter(adapterRcvJobs);
     }
 
 
@@ -148,6 +167,13 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     }
 
     @Override
+    public void loadJobItems(ArrayList<JobItem> lstJobItems) {
+        this.lstJobItems.clear();
+        this.lstJobItems.addAll(lstJobItems);
+        this.adapterRcvJobs.notifyDataSetChanged();
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         mainPresenter.processNavMenuClick(menuItem.getItemId());
 
@@ -160,20 +186,39 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         tvNavName = header.findViewById(R.id.tvNavName);
         tvNavUsername = header.findViewById(R.id.tvNavUsername);
         ivNavAvatar = header.findViewById(R.id.ivNavAvatar);
-        rvCategories = findViewById(R.id.rvCategories);
+        rcvCategories = findViewById(R.id.rcvCategories);
+
+        rcvJobItems = findViewById(R.id.rcvJobItems);
 
         progressDialog = new ProgressDialog(this);
     }
 
 
     private void addEvents() {
-        //        IBtnCategory.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, CategoryLanguage.class);
-//                startActivity(intent);
-//            }
-//        });
+        rcvCategories.addOnItemTouchListener(new RcvItemOnClickListener(this, rcvCategories, new RcvItemOnClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                mainPresenter.filterOutJobs(lstCategories.get(position).getId());
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+                // do anything
+            }
+        }));
+
+        rcvJobItems.addOnItemTouchListener(new RcvItemOnClickListener(this, rcvJobItems, new RcvItemOnClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                // đổi sang màn hình chi tiết ở đây
+
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
     }
 
     @Override
@@ -230,27 +275,19 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         private int mItemOffset;
 
         public ItemOffsetDecoration(int itemOffset) {
-
             mItemOffset = itemOffset;
-
         }
 
         public ItemOffsetDecoration(@NonNull Context context, @DimenRes int itemOffsetId) {
-
             this(context.getResources().getDimensionPixelSize(itemOffsetId));
-
         }
 
         @Override
 
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
-
                                    RecyclerView.State state) {
-
             super.getItemOffsets(outRect, view, parent, state);
-
             outRect.set(mItemOffset, mItemOffset, mItemOffset, mItemOffset);
-
         }
 
     }
