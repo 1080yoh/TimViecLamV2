@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/element_margin"
+    tools:context=".view.registerjob.RegisterJobActivity">
+
+    <TextView
+        android:id="@+id/tvRegisterJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Đăng tin tuyển dụng"
+        android:textSize="@dimen/text_header" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/edTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvRegisterJob"
+        android:hint="Tiêu đề" />
+</RelativeLayout>
