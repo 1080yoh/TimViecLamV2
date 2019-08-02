@@ -15,6 +15,8 @@ public interface IMainView {
     void loadJobItems(ArrayList<JobItem> lstJobItems);
 
     void navigateToRegisterJobActivity();
+
+    void navigateToPostedJobsActivity();
     void loadData();
 
     void setNavMenu(int idMenu);

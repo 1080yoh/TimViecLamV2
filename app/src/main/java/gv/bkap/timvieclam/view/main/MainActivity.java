@@ -37,6 +37,7 @@ import gv.bkap.timvieclam.view.AbsActivityHasNavDrawable;
 import gv.bkap.timvieclam.view.detailcustomer.DetailCustomerActivity;
 import gv.bkap.timvieclam.view.dialog.ProgressDialog;
 import gv.bkap.timvieclam.view.login.LoginActivity;
+import gv.bkap.timvieclam.view.postedjobs.PostedJobsActivity;
 import gv.bkap.timvieclam.view.registerjob.RegisterJobActivity;
 
 public class MainActivity extends AbsActivityHasNavDrawable implements NavigationView.OnNavigationItemSelectedListener, IMainView {
@@ -124,6 +125,7 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     protected void onStop() {
         super.onStop();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -163,6 +165,12 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         Intent intent = new Intent(this, RegisterJobActivity.class);
         TaskOpenActivity taskOpenActivity = new TaskOpenActivity();
         taskOpenActivity.execute(intent);
+    }
+
+    @Override
+    public void navigateToPostedJobsActivity() {
+        Intent intent = new Intent(this, PostedJobsActivity.class);
+        startActivity(intent);
     }
 
     @Override
