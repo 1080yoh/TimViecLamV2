@@ -16,6 +16,8 @@ public interface IMainView {
 
     void mainToDetailJobActivity();
     void navigateToRegisterJobActivity();
+
+    void navigateToPostedJobsActivity();
     void loadData();
 
     void setNavMenu(int idMenu);

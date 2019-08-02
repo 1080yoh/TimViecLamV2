@@ -72,6 +72,10 @@ public class MainPresenter implements IMainPresenter, IOnReceivedCategories, IOn
                 break;
             case R.id.nav_registerjob:
                 mainView.navigateToRegisterJobActivity();
+                break;
+            case R.id.nav_listpost:
+                mainView.navigateToPostedJobsActivity();
+                break;
             default:
                 break;
         }
