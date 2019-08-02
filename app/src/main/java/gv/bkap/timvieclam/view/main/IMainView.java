@@ -14,6 +14,7 @@ public interface IMainView {
 
     void loadJobItems(ArrayList<JobItem> lstJobItems);
 
+    void mainToDetailJobActivity();
     void navigateToRegisterJobActivity();
     void loadData();
 

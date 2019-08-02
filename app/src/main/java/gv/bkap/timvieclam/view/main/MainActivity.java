@@ -34,6 +34,7 @@ import gv.bkap.timvieclam.presenter.main.IMainPresenter;
 import gv.bkap.timvieclam.presenter.main.MainPresenter;
 import gv.bkap.timvieclam.view.AbsActivityHasNavDrawable;
 import gv.bkap.timvieclam.view.detailcustomer.DetailCustomerActivity;
+import gv.bkap.timvieclam.view.detailjob.DetailJobActivity;
 import gv.bkap.timvieclam.view.dialog.ProgressDialog;
 import gv.bkap.timvieclam.view.login.LoginActivity;
 import gv.bkap.timvieclam.view.registerjob.RegisterJobActivity;
@@ -69,7 +70,6 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         initData();
         loadData();
         addEvents();
-
         mainPresenter.loadCategories();
         mainPresenter.loadJobItems();
     }
@@ -99,6 +99,7 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         rcvJobItems.addItemDecoration(dividerJobItems);
         // set adapter
         rcvJobItems.setAdapter(adapterRcvJobs);
+
     }
 
 
@@ -117,7 +118,6 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     protected void onStop() {
         super.onStop();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -174,6 +174,13 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     }
 
     @Override
+    public void mainToDetailJobActivity() {
+        Intent intent = new Intent(this, DetailJobActivity.class);
+        TaskOpenActivity taskOpenActivity = new TaskOpenActivity();
+        taskOpenActivity.execute(intent);
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         mainPresenter.processNavMenuClick(menuItem.getItemId());
 
@@ -211,7 +218,7 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
             @Override
             public void onItemClick(View view, int position) {
                 // đổi sang màn hình chi tiết ở đây
-
+                mainToDetailJobActivity();
             }
 
             @Override

@@ -30,7 +30,6 @@ public class MainPresenter implements IMainPresenter, IOnReceivedCategories, IOn
 
     @Override
     public void processOptionItemClick(int id) {
-
     }
 
     @Override

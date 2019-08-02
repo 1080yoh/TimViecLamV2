@@ -52,13 +52,13 @@
     </string-array>
     <string-array name="list_salary">
         <item>theo thỏa thuận</item>
-        <item>dưới 3tr</item>
-        <item>3 - 5tr</item>
-        <item>5 - 7tr</item>
-        <item>7 - 10tr</item>
-        <item>10 - 20tr</item>
-        <item>20 - 50tr</item>
-        <item>Trên 50tr</item>
+        <item>dưới 3triệu</item>
+        <item>3 - 5triệu</item>
+        <item>5 - 7triệu</item>
+        <item>7 - 10triệu</item>
+        <item>10 - 20triệu</item>
+        <item>20 - 50triệu</item>
+        <item>Trên 50triệu</item>
     </string-array>
     <string-array name="list_language">
         <item>Java</item>

@@ -9,5 +9,6 @@
     <dimen name="element_margin">8dp</dimen>
     <dimen name="text_header">30sp</dimen>
     <dimen name="sizetext">20sp</dimen>
+    <dimen name="text_detail">17sp</dimen>
     <dimen name="divider_category">13dp</dimen>
 </resources>

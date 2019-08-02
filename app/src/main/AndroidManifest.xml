@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.registerjob.RegisterJobActivity"></activity>
+        <activity android:name=".view.detailjob.DetailJobActivity"></activity>
+        <activity android:name=".view.registerjob.RegisterJobActivity" />
         <activity android:name=".view.detailcustomer.DetailCustomerActivity" />
         <activity
             android:name=".view.category.CategoryLanguage"

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/element_margin"
+    tools:context=".view.detailjob.DetailJobActivity">
+
+    <TextView
+        android:id="@+id/tvJobName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/element_margin"
+        android:background="#03A9F4"
+        android:text="Tuyền lập trình viên java"
+        android:textAllCaps="true"
+        android:textColor="@color/color_category"
+        android:textSize="@dimen/sizetext"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCompanyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvJobName"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Công ti trách nhiệm hữu hạn 1 thành viên"
+        android:textSize="@dimen/sizetext" />
+
+    <TextView
+        android:id="@+id/tv_salary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvCompanyName"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Mức lương: "
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tvSalaryJob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvCompanyName"
+        android:layout_marginLeft="@dimen/element_margin"
+        android:layout_marginTop="@dimen/element_margin"
+        android:layout_toRightOf="@id/tv_numberEmployee"
+        android:text="10-15 triệu"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tv_exp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvSalaryJob"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Kinh nghiệm: "
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tvExpJob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvSalaryJob"
+        android:layout_marginLeft="@dimen/element_margin"
+        android:layout_marginTop="@dimen/element_margin"
+        android:layout_toRightOf="@id/tv_numberEmployee"
+        android:text="1 năm kinh nghiệm"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tv_locaiton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvExpJob"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Địa điểm: "
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_exp"
+        android:layout_marginLeft="@dimen/element_margin"
+        android:layout_marginTop="@dimen/element_margin"
+        android:layout_toRightOf="@id/tv_numberEmployee"
+        android:text="Ba Đình,Hà Nội"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tv_numberEmployee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvLocation"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Số lượng tuyển: "
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tvNumberEmployee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvLocation"
+        android:layout_marginLeft="@dimen/element_margin"
+        android:layout_marginTop="@dimen/element_margin"
+        android:layout_toRightOf="@id/tv_numberEmployee"
+        android:text="3"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tv_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_numberEmployee"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Ngành nghề "
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tvJob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_numberEmployee"
+        android:layout_marginLeft="@dimen/element_margin"
+        android:layout_marginTop="@dimen/element_margin"
+        android:layout_toRightOf="@id/tv_numberEmployee"
+        android:text="Java"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tv_describe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvJob"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Mô tả công việc: "
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tvDescribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_describe"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Đi làm 7 ngày
+nghỉ không giới hạn"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tv_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDescribe"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Yêu cầu công việc: "
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tvRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_request"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="no Coment"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tv_interest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvRequest"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Quyền lợi: "
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_detail" />
+
+    <TextView
+        android:id="@+id/tvInterest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_interest"
+        android:layout_marginTop="@dimen/element_margin"
+        android:text="Đi làm 7 ngày
+nghỉ không giới hạn"
+        android:textSize="@dimen/text_detail" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvInterest"
+        android:layout_marginTop="@dimen/element_margin"
+        android:background="@color/salary_color"
+        android:text="Nộp hồ sơ"
+        android:textColor="@color/color_category" />
+</RelativeLayout>
