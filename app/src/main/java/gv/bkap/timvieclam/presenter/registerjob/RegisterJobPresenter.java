@@ -1,21 +1,17 @@
 package gv.bkap.timvieclam.presenter.registerjob;
 
-import android.content.Context;
 import android.os.Handler;
-import android.widget.Toast;
 
 import gv.bkap.timvieclam.model.registerjob.IRegisterJobInteractor;
 import gv.bkap.timvieclam.model.registerjob.RegisterJobInteractor;
 import gv.bkap.timvieclam.view.registerjob.IRegisterJobView;
 
 public class RegisterJobPresenter implements IRegisterJobPresenter {
-    private Context context;
     private IRegisterJobView registerJobView;
     private IRegisterJobInteractor registerJobInteractor;
 
-    public RegisterJobPresenter(IRegisterJobView registerJobView, Context context) {
+    public RegisterJobPresenter(IRegisterJobView registerJobView) {
         this.registerJobView = registerJobView;
-        this.context = context;
         registerJobInteractor = new RegisterJobInteractor(this);
     }
 
@@ -45,7 +41,7 @@ public class RegisterJobPresenter implements IRegisterJobPresenter {
                     registerJobInteractor.registerJob(title, numberPerson, description, requestJob, exp, salary, skill, interest, contact);
                 }
             }, 1000);
-            Toast.makeText(context, "đăng kí thành công", Toast.LENGTH_LONG).show();
+            registerJobView.registerSucess();
         }
     }
 

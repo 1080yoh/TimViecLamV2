@@ -6,7 +6,10 @@ public interface IMainPresenter {
     void loadCategories();
 
     void loadJobItems();
+
     void processNavMenuClick(int id);
 
     void filterOutJobs(int idCategory);
+
+    void detailJobItem(int idJob);
 }

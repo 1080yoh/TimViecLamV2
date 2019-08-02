@@ -6,4 +6,7 @@ public interface IMainInteractor {
     void loadJobItems();
 
     void loadJobItems(int category);
+
+    void detailJobItem(int idJob);
+
 }

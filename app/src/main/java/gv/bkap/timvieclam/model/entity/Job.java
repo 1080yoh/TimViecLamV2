@@ -8,6 +8,8 @@ public class Job {
     String RequestJob;
     String SalaryJob;
     String describe;
+    String location;
+    String exp;
     int number;
     String interest;
 
@@ -22,6 +24,19 @@ public class Job {
         this.number = number;
     }
 
+    public Job(int idJob, int idlistWork, String nameJob, String requestJob, String salaryJob, String describe, String location, int number, String exp, String interest) {
+        this.idJob = idJob;
+        this.idlistWork = idlistWork;
+        this.nameJob = nameJob;
+        this.RequestJob = requestJob;
+        this.SalaryJob = salaryJob;
+        this.describe = describe;
+        this.location = location;
+        this.number = number;
+        this.exp = exp;
+        this.interest = interest;
+    }
+
     public Job(int idCustomer, int idlistWork, String nameJob, String requestJob, String salaryJob, String describe, int number) {
         this.idCustomer = idCustomer;
         this.idlistWork = idlistWork;
@@ -32,7 +47,7 @@ public class Job {
         this.number = number;
     }
 
-    public Job(int idJob, int idCustomer, int idlistWork, String nameJob, String requestJob, String salaryJob, String describe, int number, String interest) {
+    public Job(int idJob, int idCustomer, int idlistWork, String nameJob, String requestJob, String salaryJob, String describe, int number, String exp, String interest) {
         this.idJob = idJob;
         this.idCustomer = idCustomer;
         this.idlistWork = idlistWork;
@@ -41,7 +56,24 @@ public class Job {
         SalaryJob = salaryJob;
         this.describe = describe;
         this.number = number;
+        this.exp = exp;
         this.interest = interest;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getExp() {
+        return exp;
+    }
+
+    public void setExp(String exp) {
+        this.exp = exp;
     }
 
     public int getIdJob() {

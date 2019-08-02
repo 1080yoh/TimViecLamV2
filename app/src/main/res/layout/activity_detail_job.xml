@@ -38,7 +38,7 @@
         android:textSize="@dimen/text_detail" />
 
     <TextView
-        android:id="@+id/tvSalaryJob"
+        android:id="@+id/tvJobSalary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvCompanyName"
@@ -52,7 +52,7 @@
         android:id="@+id/tv_exp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvSalaryJob"
+        android:layout_below="@id/tvJobSalary"
         android:layout_marginTop="@dimen/element_margin"
         android:text="Kinh nghiệm: "
         android:textColor="@color/colorPrimary"
@@ -62,7 +62,7 @@
         android:id="@+id/tvExpJob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvSalaryJob"
+        android:layout_below="@id/tvJobSalary"
         android:layout_marginLeft="@dimen/element_margin"
         android:layout_marginTop="@dimen/element_margin"
         android:layout_toRightOf="@id/tv_numberEmployee"
@@ -80,7 +80,7 @@
         android:textSize="@dimen/text_detail" />
 
     <TextView
-        android:id="@+id/tvLocation"
+        android:id="@+id/tvJobLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_exp"
@@ -94,17 +94,17 @@
         android:id="@+id/tv_numberEmployee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvLocation"
+        android:layout_below="@id/tvJobLocation"
         android:layout_marginTop="@dimen/element_margin"
         android:text="Số lượng tuyển: "
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_detail" />
 
     <TextView
-        android:id="@+id/tvNumberEmployee"
+        android:id="@+id/tvNumberEmploye"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvLocation"
+        android:layout_below="@id/tvJobLocation"
         android:layout_marginLeft="@dimen/element_margin"
         android:layout_marginTop="@dimen/element_margin"
         android:layout_toRightOf="@id/tv_numberEmployee"

@@ -6,4 +6,6 @@ public interface IRegisterJobView {
     void setNumberError(String message);
 
     void resetRegisterError();
+
+    void registerSucess();
 }

@@ -87,6 +87,15 @@ public class MainPresenter implements IMainPresenter, IOnReceivedCategories, IOn
     }
 
     @Override
+    public void detailJobItem(int idJob) {
+        if (idJob == -1)
+            loadJobItems();
+        else {
+            iMainInteractor.detailJobItem(idJob);
+        }
+    }
+
+    @Override
     public void onReceivedCategories(ArrayList<Category> lstCategories) {
         lstCategories.add(0, new Category(-1, "All", ServerInteractor.HOSTING_IMAGES + "ic_all.png"));
         mainView.loadCategories(lstCategories);
@@ -98,4 +107,5 @@ public class MainPresenter implements IMainPresenter, IOnReceivedCategories, IOn
         mainView.loadJobItems(lstJobItems);
         mainView.dismissProgressDialog();
     }
+
 }

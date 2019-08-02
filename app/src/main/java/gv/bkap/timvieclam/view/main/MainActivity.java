@@ -28,13 +28,13 @@ import gv.bkap.timvieclam.R;
 import gv.bkap.timvieclam.model.ApplicationContext;
 import gv.bkap.timvieclam.model.entity.Account;
 import gv.bkap.timvieclam.model.entity.Category;
+import gv.bkap.timvieclam.model.entity.Job;
 import gv.bkap.timvieclam.model.entity.JobItem;
 import gv.bkap.timvieclam.model.server.ServerInteractor;
 import gv.bkap.timvieclam.presenter.main.IMainPresenter;
 import gv.bkap.timvieclam.presenter.main.MainPresenter;
 import gv.bkap.timvieclam.view.AbsActivityHasNavDrawable;
 import gv.bkap.timvieclam.view.detailcustomer.DetailCustomerActivity;
-import gv.bkap.timvieclam.view.detailjob.DetailJobActivity;
 import gv.bkap.timvieclam.view.dialog.ProgressDialog;
 import gv.bkap.timvieclam.view.login.LoginActivity;
 import gv.bkap.timvieclam.view.registerjob.RegisterJobActivity;
@@ -45,12 +45,18 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
     private IMainPresenter mainPresenter;
     private TextView tvNavName;
     private TextView tvNavUsername;
+    public static final String NAMEJOB = "NAMEJOB";
+    public static final String SALARY = "SALARY";
+    public static final String LOCATION = "LOCATION";
     private ImageView ivNavAvatar;
-
+    public static final String BUNDLE = "BUNDLE";
+    private TextView tvNameJob;
+    private TextView tvSalary;
+    private TextView tvLocation;
     private RecyclerView rcvCategories;
     private AdapterRcvCategories adapterRcvCategories;
     private ArrayList<Category> lstCategories;
-
+    private ArrayList<Job> lstJob;
     private RecyclerView rcvJobItems;
     private AdapterRcvJobs adapterRcvJobs;
     private ArrayList<JobItem> lstJobItems;
@@ -173,12 +179,6 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         this.adapterRcvJobs.notifyDataSetChanged();
     }
 
-    @Override
-    public void mainToDetailJobActivity() {
-        Intent intent = new Intent(this, DetailJobActivity.class);
-        TaskOpenActivity taskOpenActivity = new TaskOpenActivity();
-        taskOpenActivity.execute(intent);
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -198,6 +198,10 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         rcvJobItems = findViewById(R.id.rcvJobItems);
 
         progressDialog = new ProgressDialog(this);
+
+        tvNameJob = findViewById(R.id.tvNameJob);
+        tvSalary = findViewById(R.id.tvSalary);
+        tvLocation = findViewById(R.id.tvLocation);
     }
 
 
@@ -217,8 +221,7 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
         rcvJobItems.addOnItemTouchListener(new RcvItemOnClickListener(this, rcvJobItems, new RcvItemOnClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // đổi sang màn hình chi tiết ở đây
-                mainToDetailJobActivity();
+                mainPresenter.detailJobItem(lstJobItems.get(position).getId());
             }
 
             @Override
@@ -276,7 +279,6 @@ public class MainActivity extends AbsActivityHasNavDrawable implements Navigatio
             return null;
         }
     }
-
     public class ItemOffsetDecoration extends RecyclerView.ItemDecoration {
 
         private int mItemOffset;

@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import gv.bkap.timvieclam.R;
 import gv.bkap.timvieclam.model.utils.MyLocalDatabase;
@@ -29,7 +30,7 @@ public class RegisterJobActivity extends AbsCommonActivity implements IRegisterJ
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_job);
-        registerJobPresenter = new RegisterJobPresenter(this, this);
+        registerJobPresenter = new RegisterJobPresenter(this);
         initComps();
 
     }
@@ -69,5 +70,11 @@ public class RegisterJobActivity extends AbsCommonActivity implements IRegisterJ
     @Override
     public void resetRegisterError() {
 
+    }
+
+    @Override
+    public void registerSucess() {
+        Toast.makeText(this, "đăng kí thành công", Toast.LENGTH_LONG).show();
+        finish();
     }
 }
